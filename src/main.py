@@ -1,4 +1,4 @@
 from fastapi import FastAPI
-from settings import settings
+from src.settings import settings
 
 app = FastAPI(title=settings.title)

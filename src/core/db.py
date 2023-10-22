@@ -1,19 +1,15 @@
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
-from sqlalchemy.orm import declarative_base, sessionmaker, declared_attr
+from sqlalchemy.orm import DeclarativeBase, sessionmaker, declared_attr
 
 from src.settings import settings
 
 
-class PreBase:
+class Base(DeclarativeBase):
 
     @declared_attr
     def __tablename__(cls):
         return cls.__name__.lower()
 
-
-Base = declarative_base(
-    cls=PreBase,
-)
 
 engine = create_async_engine(
     settings.database_url,

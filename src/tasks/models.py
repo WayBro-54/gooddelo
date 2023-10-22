@@ -1,4 +1,5 @@
-from sqlalchemy import Integer, String, Text, Column
+from sqlalchemy import Integer, String, Text, Column, DateTime, ForeignKey
+from sqlalchemy.orm import mapped_column, Mapped
 from src.core.db import Base
 
 
@@ -15,4 +16,17 @@ class Tasks(Base):
     desriptions = Column(
         Text,
         nullable=False,
+    )
+    title = Column(
+        String(100),
+        unique=True,
+    )
+    date_post = Column(
+        DateTime,
+    )
+    date_update = Column(
+        DateTime,
+    )
+    user_id: Mapped[int] = mapped_column(
+        ForeignKey('')
     )
